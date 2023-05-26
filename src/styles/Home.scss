@@ -1,0 +1,353 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Poppins, 'sans-serif';
+}
+
+.mainHome {
+  width: 100%;
+  height: 100vh;
+  background: #E8F1F2;
+
+  display: flex;
+
+  transition: margin-left .5s;
+
+  .leftContentHome {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+
+    @media screen and (max-width: 1000px) {
+      display: none;
+    }
+    img {
+      height: 500px;
+    }
+  }
+
+  .rightContentHome {
+    flex: 1;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .login {
+      background: #fff;
+      padding: 25px;
+
+      border-radius: 10px;
+
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.089);
+
+      h3 {
+        margin-bottom: 20px;
+        color: #0071f2;
+      }
+
+      .formLogin {
+        display: flex;
+        flex-direction: column;
+
+        input {
+          height: 35px;
+          width: 300px;
+
+          border: none;
+          border-radius: 5px;
+          padding-left: 5px;
+
+          background: #ebeeee ;
+
+          &:focus {
+            outline-color:#0071f267;
+          }
+        }
+
+        input[type=submit] {
+          margin-top: 25px;
+          background: #0071f2;
+
+          color: #fff;
+
+          transition: .5s;
+
+          cursor: pointer;
+
+          &:hover {
+            filter: brightness(0.8);
+          }
+        }
+
+        p {
+          font-size: 13px;
+          color: #888995;
+        }
+
+        span {
+          font-size: 13px;
+          color: #888995;
+          text-align: center;
+
+          margin: 10px 0;
+        }
+
+        .createAccountButton {
+          min-height: 35px;
+          min-width: 300px;
+
+          border: none;
+          border-radius: 5px;
+          padding-left: 5px;
+
+          background: #ebeeee ;
+
+          cursor: pointer;
+
+          transition: .5s;
+
+          color: #2f2e41;
+
+          &:hover {
+            filter: brightness(0.8);
+          }
+        }
+      }
+    }
+  }
+}
+
+.mainCreateAccount {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    background-color: #E8F1F2;
+    overflow-x: hidden;
+    transition: .4s;
+
+    display: flex;
+
+    .leftContentCreateAccount {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 1;
+
+        .createAccount {
+            background: #fff;
+            padding: 25px;
+            border-radius: 10px;
+
+            h3 {
+                margin-bottom: 20px;
+                color: #0071f2;
+            }
+
+            .formCreateAccount {
+                display: flex;
+                flex-direction: column;
+
+                input {
+                    height: 35px;
+                    width: 300px;
+
+                    border: none;
+                    border-radius: 5px;
+                    padding-left: 5px;
+
+                    background: #ebeeee ;
+
+                    &:focus {
+                        outline-color:#0071f267;
+                    }
+                }
+
+                input[type=submit] {
+                    margin-top: 25px;
+                    background: #0071f2;
+
+                    color: #fff;
+
+                    transition: .5s;
+
+                    cursor: pointer;
+
+                    &:hover {
+                        filter: brightness(0.8);
+                    }
+                }
+
+                p {
+                    font-size: 13px;
+                    color: #888995;
+                }
+
+                span {
+                    font-size: 13px;
+                    color: #888995;
+                    text-align: center;
+
+                    margin: 10px 0;
+                }
+
+                .signInButton {
+                    min-height: 35px;
+                    min-width: 300px;
+
+                    border: none;
+                    border-radius: 5px;
+                    padding-left: 5px;
+
+                    background: #ebeeee ;
+
+                    cursor: pointer;
+
+                    transition: .5s;
+
+                    color: #2f2e41;
+
+                    &:hover {
+                        filter: brightness(0.8);
+                    }
+                }
+            }
+        }
+    }
+
+    .rightContentCreateAccount {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex: 1;
+
+      @media screen and (max-width: 1000px) {
+        display: none;
+      }
+
+      img {
+        height: 500px;
+      }
+    }
+}
+
+
+.ToastViewport {
+    --viewport-padding: 25px;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    padding: var(--viewport-padding);
+    gap: 10px;
+    width: 390px;
+    max-width: 100vw;
+    margin: 0;
+    list-style: none;
+    z-index: 2147483647;
+    outline: none;
+  }
+  
+  .ToastRoot {
+    background-color: white;
+    border-radius: 6px;
+    box-shadow: hsl(206 22% 7% / 35%) 0px 10px 38px -10px, hsl(206 22% 7% / 20%) 0px 10px 20px -15px;
+    padding: 15px;
+    display: grid;
+    grid-template-areas: 'title action' 'description action';
+    grid-template-columns: auto max-content;
+    column-gap: 15px;
+    align-items: center;
+  }
+  .ToastRoot[data-state='open'] {
+    animation: slideIn 150ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .ToastRoot[data-state='closed'] {
+    animation: hide 100ms ease-in;
+  }
+  .ToastRoot[data-swipe='move'] {
+    transform: translateX(var(--radix-toast-swipe-move-x));
+  }
+  .ToastRoot[data-swipe='cancel'] {
+    transform: translateX(0);
+    transition: transform 200ms ease-out;
+  }
+  .ToastRoot[data-swipe='end'] {
+    animation: swipeOut 100ms ease-out;
+  }
+  
+  @keyframes hide {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
+  
+  @keyframes slideIn {
+    from {
+      transform: translateX(calc(100% + var(--viewport-padding)));
+    }
+    to {
+      transform: translateX(0);
+    }
+  }
+  
+  @keyframes swipeOut {
+    from {
+      transform: translateX(var(--radix-toast-swipe-end-x));
+    }
+    to {
+      transform: translateX(calc(100% + var(--viewport-padding)));
+    }
+  }
+  
+  .ToastTitle {
+    grid-area: title;
+    margin-bottom: 5px;
+    font-weight: 500;
+    color: #0071f2;
+    font-size: 15px;
+  }
+  
+  .ToastDescription {
+    grid-area: description;
+    margin: 0;
+    color: #888995;
+    font-size: 13px;
+    line-height: 1.3;
+  }
+  
+  .ToastAction {
+    grid-area: action;
+  }
+
+  .buttonToast {
+    background: #fff;
+    border: 1px solid #0071f2;
+    
+    padding: 5px;
+
+    border-radius: 5px;
+
+    transition: .4s;
+    color: #2f2e41;
+
+    cursor: pointer;
+
+    &:hover {
+        background: #0071f2;
+        color: #fff;
+    }
+}
+
+.description{
+    color: #888995bb;
+}
